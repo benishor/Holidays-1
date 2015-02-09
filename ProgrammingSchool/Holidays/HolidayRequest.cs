@@ -39,12 +39,6 @@ namespace Holidays
             SaveRequest();
         }
 
-        private void SaveRequest()
-        {
-            var holidayRequestRepository = new HolidayRequestRepository();
-            holidayRequestRepository.Store(this);    
-        }
-
         public void Approve()
         {
             SendAcceptEmail();
@@ -87,6 +81,12 @@ namespace Holidays
                                     approver.Name, requester.Name,
                                     holidayPeriod.From.ToShortDateString(),
                                     holidayPeriod.To.ToShortDateString());
+        }
+
+        private void SaveRequest()
+        {
+            var holidayRequestRepository = new HolidayRequestRepository();
+            holidayRequestRepository.Store(this);
         }
 
         public override string ToString()
