@@ -19,10 +19,10 @@ namespace Holidays.UI
             var holidayPeriod = new Period(new DateTime(2014, 11, 25), new DateTime(2014, 11, 28));
 
             employee.AskForHoliday(manager, holidayPeriod);
-            holidayRequestRepository.GetNewRequestsForApprover("Manager").ForEach(r => r.Approve());
+            holidayRequestRepository.GetNewRequestsForApprover("manager@company.com").ForEach(r => r.Approve());
             
             employee.AskForHoliday(manager, holidayPeriod);
-            holidayRequestRepository.GetNewRequestsForApprover("Manager").ForEach(r => r.Reject());
+            holidayRequestRepository.GetNewRequestsForApprover("manager@company.com").ForEach(r => r.Reject());
 
             
             holidayRequestRepository.GetAll().ForEach(r => Console.WriteLine(r.ToString()));

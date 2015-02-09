@@ -96,7 +96,7 @@ namespace Holidays
 
         public bool IsPendingForApprove(string approverEmail)
         {
-            return approver.Name == approverEmail && status == Status.Pending;
+            return approver.Email == approverEmail && status == Status.Pending;
         }
     }
 }
