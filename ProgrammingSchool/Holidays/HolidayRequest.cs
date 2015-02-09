@@ -94,7 +94,7 @@ namespace Holidays
             return String.Format("From:{0} To:{1} Status: {2} ID:{3}", requester.Name, approver.Name,status,requestId);
         }
 
-        internal bool IsPendingForApprove(string approverEmail)
+        public bool IsPendingForApprove(string approverEmail)
         {
             return approver.Name == approverEmail && status == Status.Pending;
         }
