@@ -11,16 +11,23 @@ namespace Holidays.UI
         {
             Setup();
 
-            var employeesRepository = new EmployeesRepository();
+            Employee manager = new Employee("Manager", "manager@company.com");
+            Employee employee = new Employee("Employee", "employee@company.com");
 
-            Manager manager = employeesRepository.CreateManager("Manager", "manager@company.com");
-            Employee employee = employeesRepository.CreateEmployee("Employee", "employee@company.com");
-            
+            HolidayRequestRepository holidayRequestRepository = new HolidayRequestRepository();
+
             var holidayPeriod = new Period(new DateTime(2014, 11, 25), new DateTime(2014, 11, 28));
-            var holidayRequest = employee.AskForHoliday(manager, holidayPeriod);
 
-            manager.ApproveHoliday(holidayRequest);
-            manager.RejectHoliday(holidayRequest);            
+            employee.AskForHoliday(manager, holidayPeriod);
+            holidayRequestRepository.GetNewRequestsForApprover("Manager").ForEach(r => r.Approve());
+            
+            employee.AskForHoliday(manager, holidayPeriod);
+            holidayRequestRepository.GetNewRequestsForApprover("Manager").ForEach(r => r.Reject());
+
+            
+            holidayRequestRepository.GetAll().ForEach(r => Console.WriteLine(r.ToString()));
+            
+            Console.ReadLine();
         }
 
         private static void Setup()
