@@ -42,12 +42,6 @@
     <Compile Include="EmailServerMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Holidays.Lib\Holidays.Lib.csproj">
-      <Project>{12bc5259-4233-449c-a828-91ae1ae3d403}</Project>
-      <Name>Holidays.Lib</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

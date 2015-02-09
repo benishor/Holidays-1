@@ -50,6 +50,10 @@
     <Compile Include="Company\Employee.cs" />
     <Compile Include="Company\EmployeesRepository.cs" />
     <Compile Include="HolidayRequest.cs" />
+    <Compile Include="Lib\Email.cs" />
+    <Compile Include="Lib\EmailServer.cs" />
+    <Compile Include="Lib\EmailServerLocator.cs" />
+    <Compile Include="Lib\IEmailServer.cs" />
     <Compile Include="Resources\HolidaysResources.Designer.cs">
       <DependentUpon>HolidaysResources.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -58,7 +62,6 @@
     <Compile Include="Company\Manager.cs" />
     <Compile Include="Period.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequestState.cs" />
     <EmbeddedResource Include="Resources\HolidaysResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>HolidaysResources.Designer.cs</LastGenOutput>
@@ -82,12 +85,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Holidays.Lib\Holidays.Lib.csproj">
-      <Project>{12bc5259-4233-449c-a828-91ae1ae3d403}</Project>
-      <Name>Holidays.Lib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

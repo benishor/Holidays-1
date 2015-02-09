@@ -52,10 +52,6 @@
       <Project>{81689448-5a02-428a-91b0-fc5c25a13a95}</Project>
       <Name>Holidays</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Holidays.Lib\Holidays.Lib.csproj">
-      <Project>{12bc5259-4233-449c-a828-91ae1ae3d403}</Project>
-      <Name>Holidays.Lib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Holidays.Mocks\Holidays.Mocks.csproj">
       <Project>{0d40dfd2-9b0b-4739-ae25-4c77c0af095b}</Project>
       <Name>Holidays.Mocks</Name>
