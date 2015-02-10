@@ -3,6 +3,8 @@ using Holidays.Company;
 using Holidays.Mocks;
 using Holidays.Lib;
 
+using NDatabase;
+
 namespace Holidays.UI
 {
     class Program
@@ -32,6 +34,7 @@ namespace Holidays.UI
 
         private static void Setup()
         {
+            StorageLocator.Set(OdbFactory.Open("HolidayRequest.db"));
             EmailServerLocator.EmailServer = new EmailServerMock();
         }
     }

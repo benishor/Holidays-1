@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
-using NDatabase;
 using NDatabase.Api;
 
 namespace Holidays
 {
     public class HolidayRequestRepository
     {
-        private const string DATABASE = "HolidayRequest.db";
+        private readonly IOdb storage;
 
-        private static readonly IOdb storage;
-
-        static HolidayRequestRepository()
+        public HolidayRequestRepository()
         {
-            storage = OdbFactory.Open(DATABASE);
+            storage = StorageLocator.Get();
         }
        
         public void Store(HolidayRequest holidayRequest)
@@ -26,8 +22,7 @@ namespace Holidays
 
         public List<HolidayRequest> GetAll()
         {
-            return storage.Query<HolidayRequest>().Execute<HolidayRequest>().ToList();    
-            
+            return storage.Query<HolidayRequest>().Execute<HolidayRequest>().ToList();
         }
 
         public List<HolidayRequest> GetNewRequestsForApprover(string approver)
