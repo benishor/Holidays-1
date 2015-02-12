@@ -53,6 +53,7 @@ namespace Holidays
             SaveRequest();
         }
 
+        // CR: we could improve clarity by moving these private methods below the unit exposed contract
         private void SendAcceptEmail()
         {
             var notification = new Email(approver.Email, ConfigurationSettings.AppSettings["HREmail"]);
@@ -64,6 +65,8 @@ namespace Holidays
         {
             var notification = new Email(requester.Email, approver.Email);
             notification.Subject = GetSubject(HolidaysResources.SubmitNotificationSubject);
+            // CR: why not employ the same formatting as for the subject? It is more likely for 
+            // the body to contain all details.
             notification.Body = HolidaysResources.SubmitNotificationBody;
             notification.Send();
         }
@@ -85,6 +88,13 @@ namespace Holidays
 
         private void SaveRequest()
         {
+            // CR: cute but tricky :) Mixed feelings about this one; feels like a hack. 
+            // You are basically using a new instance as an alternative to injection or locator 
+            // but not much gain gets out of it except delegating the need for locating the storage. 
+            //
+            // At this time you do not have costly initializations for the repository but that is not 
+            // always the case in real life scenarios. The point I'm trying to make is that it feels
+            // unnatural using a repository instance like this.
             var holidayRequestRepository = new HolidayRequestRepository();
             holidayRequestRepository.Store(this);
         }
@@ -94,6 +104,7 @@ namespace Holidays
             return String.Format("From:{0} To:{1} Status: {2} ID:{3}", requester.Name, approver.Name,status,requestId);
         }
 
+        // CR: isPendingForApproval()
         public bool IsPendingForApprove(string approverEmail)
         {
             return approver.Email == approverEmail && status == Status.Pending;
